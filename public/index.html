@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Board</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="nav-right">
+    <button onclick="logout()" class="nav-button">Logout</button>
+    <button onclick="window.location.href='/admin'" class="nav-button">View Applications</button>
+    <button id="addJobBtn">
+        ➕ Add New Job
+      </button>
+
+</div>
+<!-- Add this only for admins -->
+
+<script>
+    function logout() {
+        if (confirm("Are you sure you want to logout?")) {
+            window.location.href = '/logout';  // Your backend will handle session destroy
+        }
+    }
+</script>
+
+    
+    <header>
+        <h1>"Launch Your Career: Fresher, Internship & Part-Time Jobs!"</h1>
+        <p>Find the best jobs to start your career!</p>
+        <input type="text" placeholder="Search for jobs..." id="search">
+        <button>Search</button>
+    </header>
+
+    <!-- Job Category Tabs -->
+    <div class="tabs">
+        <button class="tab-button active" onclick="showJobs('fresher jobs')">Fresher Jobs</button>
+        <button class="tab-button" onclick="showJobs('internships')">Internships</button>
+        <button class="tab-button" onclick="showJobs('part-time')">Part-Time Jobs</button>
+    </div>
+
+    <!-- Job Listings -->
+    <section id="fresher jobs" class="job-category">
+        <h2>Fresher Jobs</h2>
+        <div class="job-listings">
+            <div class="job">
+                <h3>Junior Frontend Developer</h3>
+                <p><strong>Company:</strong> Tech Startups Inc.</p>
+                <p><strong>Location:</strong> Remote</p>
+                <p class="experience">Experience: Freshers</p>
+                <button onclick="openModal()" >Apply Now</button>
+            </div>
+
+            <div class="job">
+                <h3>Junior UI/UX Designer</h3>
+                <p><strong>Company:</strong> Creative Minds</p>
+                <p><strong>Location:</strong> San Francisco</p>
+                <p class="experience">Experience: Entry-Level</p>
+                <button onclick="openModal()">Apply Now</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="internships" class="job-category hidden">
+        <h2>Internship Opportunities</h2>
+        <div class="job-listings">
+            <div class="job">
+                <h3>Software Engineering Intern</h3>
+                <p><strong>Company:</strong> CodeMasters</p>
+                <p><strong>Location:</strong> New York</p>
+                <p class="experience">Experience: Internship (0-1 year)</p>
+                <button onclick="openModal()">Apply Now</button>
+            </div>
+
+            <div class="job">
+                <h3>Digital Marketing Intern</h3>
+                <p><strong>Company:</strong> Marketing Pros</p>
+                <p><strong>Location:</strong> Remote</p>
+                <p class="experience">Experience: Internship (0-1 year)</p>
+                <button onclick="openModal()">Apply Now</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="part-time" class="job-category hidden">
+        <h2>Part-Time Jobs</h2>
+        <div class="job-listings">
+            <div class="job">
+                <h3>Customer Support Representative</h3>
+                <p><strong>Company:</strong> Support Solutions</p>
+                <p><strong>Location:</strong> Remote</p>
+                <p class="experience">Experience: No Experience Required</p>
+                <button onclick="openModal()">Apply Now</button>
+            </div>
+
+            <div class="job">
+                <h3>Content Writer (Part-Time)</h3>
+                <p><strong>Company:</strong> WritePro</p>
+                <p><strong>Location:</strong> Work From Home</p>
+                <p class="experience">Experience: 0-1 Year</p>
+                <button onclick="openModal()">Apply Now</button>
+            </div>
+        </div>
+    </section>
+    <p id="no-results" class="hidden" style="color: red; font-weight: bold; margin: 20px;">
+        No jobs found.
+    </p>
+
+
+
+  
+
+
+    <footer>
+        <p>&copy; 2025 Job Board. All Rights Reserved.</p>
+    </footer>
+
+    
+    <!-- Application Form Modal -->
+<div id="applyModal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal()">&times;</span>
+      <h2>Apply for this Job</h2>
+      <form id="applicationForm">
+        <input type="text" id="applicantName" placeholder="Name">
+        <input type="email" id="applicantEmail" placeholder="Email">
+        <textarea id="applicantMessage" placeholder="Message"></textarea>
+        <button type="submit">Apply</button>
+    </form>
+    
+    </div>
+  </div>
+  <!-- Success Popup -->
+<div id="successPopup" class="popup hidden">
+    <div class="popup-content">
+      <h2>Application Submitted!</h2>
+      <p>Thank you for applying. We’ll get back to you soon!</p>
+      <button onclick="closeSuccessPopup()">Close</button>
+    </div>
+  </div>
+  
+  <script src="index.js"></script>
+
+</body>
+</html>
+
+
